@@ -20,7 +20,7 @@ export const Header = styled.header`
 `;
 
 export const List = styled.div`
-  background: #000;
+  background: #fff;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 1px 3px rgba(0,0,0,0.05);
