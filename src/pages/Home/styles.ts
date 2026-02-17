@@ -4,7 +4,7 @@ export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 64rem; /* ~1024px */
+  max-width: 64rem;
   margin: 0 auto;
 `;
 
@@ -52,14 +52,14 @@ export const CarouselWrapper = styled.div`
 
 export const MenuCard = styled.div`
   /* Estilo do Card iOS */
-  min-width: 16rem; /* Garante o aspecto de card no mobile */
+  min-width: 14rem; 
   background: #fff;
-  border-radius: 1.5rem; /* 24px - Bem arredondado estilo Apple */
+  border-radius: 24px;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 12rem;
+  height: 10rem;
 
   scroll-snap-align: center;
   border: 0.0625rem solid #e5e5ea;

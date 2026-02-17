@@ -13,13 +13,21 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
   {
     id: 1,
+    title: 'Dashboard',
+    description:
+      'Analise seu dinheiro com detalhes e insights através de gráficos.',
+    path: '/dashboard',
+    icon: '📈',
+  },
+  {
+    id: 2,
     title: 'Transações',
-    description: 'Veja seu extrato detalhado.',
+    description: 'Veja seu extrato de transações detalhado.',
     path: '/transactions',
     icon: '💸',
   },
   {
-    id: 2,
+    id: 3,
     title: 'Categorias',
     description:
       'Organize seus gastos por grupo baseadas nas cateorias do sistema.',
@@ -27,27 +35,27 @@ const menuItems: MenuItem[] = [
     icon: '🗂️',
   },
   {
-    id: 3,
+    id: 4,
     title: 'Tipos de Categoria',
     description: 'Categorias do sistema.',
     path: '/category/types',
     icon: '🏷️',
   },
-
   {
-    id: 4,
+    id: 5,
     title: 'Metas Financeiras',
     description: 'Planeje seus sonhos e objetivos.',
     path: '/goals',
     icon: '🎯',
   },
   {
-    id: 5,
+    id: 6,
     title: 'Contas Bancárias',
     description: 'Controle seus saldos e bancos.',
     path: '/accounts',
     icon: '🏦',
   },
+
 ];
 
 const HomePage: React.FC = () => {
