@@ -32,19 +32,6 @@ export const ListItem = styled.div`
   }
 `;
 
-export const ActionButton = styled.button<{ variant?: 'primary' | 'danger' }>`
-  background: ${props => props.variant === 'danger' ? '#ff3b30' : '#32d177'};
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: opacity 0.2s;
-
-  &:active { opacity: 0.7; }
-`;
-
 export const InputGroup = styled.div`
   background: white;
   padding: 10px;
