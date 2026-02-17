@@ -2,22 +2,8 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   padding: 1rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  min-height: 60vh;
 `;
 
-export const Header = styled.header`
-    margin-bottom: 30px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-
-    h1 {
-        font-size: 30px;
-        font-weight: 700;
-        color: #929090;
-    }
-`;
 
 export const List = styled.div`
   background: #fff;

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useCategoryTypes } from '../../hooks/useCategoryType';
 import * as S from './styles';
+import CardBox from '../../components/CardBox';
 
 const CategoryTypesPage: React.FC = () => {
   const { categories, loading, addCategory, removeCategory } = useCategoryTypes();
@@ -13,10 +14,9 @@ const CategoryTypesPage: React.FC = () => {
   };
 
   return (
+
     <S.Container>
-      <S.Header>
-        <h1>Tipo de Categoria</h1>
-      </S.Header>
+      <CardBox title="Tipo de Categoria">
 
       <S.InputGroup>
         <input
@@ -49,6 +49,7 @@ const CategoryTypesPage: React.FC = () => {
           ))}
         </S.List>
       )}
+      </CardBox>
     </S.Container>
   );
 };
