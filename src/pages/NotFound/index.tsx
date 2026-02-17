@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as S from './styles';
+import Button from '../../components/Button';
 
 const NotFoundPage: React.FC = () => {
   const navigate = useNavigate();
@@ -9,9 +10,9 @@ const NotFoundPage: React.FC = () => {
     <S.Container>
       <S.ErrorCode>404</S.ErrorCode>
       <S.Message>Ops! Página não encontrada.</S.Message>
-      <S.HomeButton onClick={() => navigate('/')}>
+      <Button onClick={() => navigate('/')}>
         Voltar para o Início
-      </S.HomeButton>
+      </Button>
     </S.Container>
   );
 };
