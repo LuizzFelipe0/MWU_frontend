@@ -1,11 +1,13 @@
 import React from 'react';
-import * as header from './styles';
+import * as S from './styles';
 
 const Header: React.FC = () => {
   return (
-    <header.Header>
-      <header.Title>MWU - Money With U</header.Title>
-    </header.Header>
+    <S.Header>
+        <S.HeaderLink to="/">
+          <S.Title>MWU - Money With U</S.Title>
+        </S.HeaderLink>
+    </S.Header>
   );
 };
 

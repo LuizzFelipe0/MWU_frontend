@@ -1,7 +1,7 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Header = styled.header`
-  /* Layout */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,6 +14,12 @@ export const Header = styled.header`
   border-bottom: 0.0625rem solid #c5c9c7;
 
   box-sizing: border-box;
+`;
+
+export const HeaderLink = styled(Link)`
+  text-decoration: none; 
+  display: flex;
+  align-items: center;
 `;
 
 export const Title = styled.h1`
