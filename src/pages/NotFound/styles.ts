@@ -14,10 +14,10 @@ export const ErrorCode = styled.h1`
 `;
 
 export const Message = styled.h2`
-  font-size: clamp(1.2rem, 4vw, 1.5rem);
-  color: #000;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #929090;
   margin-top: 1rem;
-  font-weight: 400;
 `;
 
 export const HomeButton = styled.button`
