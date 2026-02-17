@@ -4,12 +4,8 @@ export interface CategoryType {
   is_positive: boolean;
 }
 
-export interface CategoryTypeCreate {
+export interface CategoryTypeInput {
   name: string;
   is_positive: boolean;
 }
 
-export interface CategoryTypeUpdate {
-  name?: string;
-  is_positive?: boolean;
-}
