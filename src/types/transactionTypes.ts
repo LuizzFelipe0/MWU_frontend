@@ -10,6 +10,9 @@ export interface Transaction {
   is_recurring: boolean;
   recurrence_interval: string;
   next_due_date: string;
+  created_at: string;
+  updated_at: string;
+  deleted_at: string | null;
 }
 
 export interface TransactionInput {
