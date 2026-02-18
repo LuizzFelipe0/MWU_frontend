@@ -5,7 +5,7 @@ export interface CategoryType {
 }
 
 export interface CategoryTypeInput {
-  name: string;
-  is_positive: boolean;
+  name?: string;
+  is_positive?: boolean;
 }
 
