@@ -1,16 +1,40 @@
-import React, { useState } from 'react';
-import { useCategoryTypes } from '../../hooks/useCategoryType';
+import React, { useState, useEffect } from 'react';
+
+import { useApi } from '../../hooks/useApi';
+import { categoryTypeService } from '../../services/categoryTypeService';
+import { CategoryType, CategoryTypeInput } from '../../types/categoryTypeTypes.ts';
+
 import * as S from './styles';
 import CardBox from '../../components/CardBox';
 import Button from '../../components/Button';
 
 const CategoryTypesPage: React.FC = () => {
-  const { categories, loading, addCategory, removeCategory } = useCategoryTypes();
+  const {
+        data,
+        loading,
+        refresh,
+        add,
+        remove
+  } = useApi <
+    CategoryType,
+    CategoryTypeInput
+  > (categoryTypeService);
+
   const [newName, setNewName] = useState('');
 
+  useEffect(() => {
+    refresh();
+  }, [refresh]);
+
   const handleAdd = async () => {
-    if (!newName) return;
-    await addCategory({ name: newName, is_positive: false });
+    if (!newName.trim()) return;
+
+    const payload: CategoryTypeInput = {
+      name: newName,
+      is_positive: false,
+    };
+
+    await add(payload);
     setNewName('');
   };
 
@@ -23,22 +47,26 @@ const CategoryTypesPage: React.FC = () => {
             value={newName}
             onChange={(e) => setNewName(e.target.value)}
           />
-          <Button onClick={handleAdd}>Adicionar</Button>
+          <Button onClick={handleAdd} disabled={loading}>
+            {loading ? '...' : 'Adicionar'}
+          </Button>
         </S.InputGroup>
 
-        {loading ? (
+        {loading && data.length === 0 ? (
           <p>Carregando...</p>
         ) : (
           <S.List>
-            {categories.map((cat) => (
+            {data.map((cat) => (
               <S.ListItem key={cat.id}>
                 <div className="info">
                   <span>{cat.name}</span>
-                  <small color={cat.is_positive ? '#32d177' : '#ff3b30'}>
+                  <small
+                    style={{ color: cat.is_positive ? '#32d177' : '#ff3b30' }}
+                  >
                     {cat.is_positive ? 'Positivo' : 'Negativo'}
                   </small>
                 </div>
-                <Button variant="danger" onClick={() => removeCategory(cat.id)}>
+                <Button variant="danger" onClick={() => remove(cat.id)}>
                   Apagar
                 </Button>
               </S.ListItem>

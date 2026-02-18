@@ -4,16 +4,12 @@ export const Container = styled.div`
   padding: 1rem;
 `;
 
-
 export const List = styled.div`
-  background: #fff;
-  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 `;
 
 export const ListItem = styled.div`
-  padding: 16px;
+  padding: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
