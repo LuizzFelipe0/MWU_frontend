@@ -17,7 +17,7 @@ export const Header = styled.header`
 `;
 
 export const HeaderLink = styled(Link)`
-  text-decoration: none; 
+  text-decoration: none;
   display: flex;
   align-items: center;
 `;
@@ -35,4 +35,15 @@ export const Title = styled.h1`
     Helvetica, Arial, sans-serif;
 
   transition: font-size 0.2s ease-in-out;
+`;
+
+export const UserArea = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #000;
+
+  strong {
+    color: #32d177;
+  }
 `;
