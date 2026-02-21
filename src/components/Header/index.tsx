@@ -15,9 +15,17 @@ const Header: React.FC = () => {
       {user && (
         <S.UserArea>
           <span>
-            Olá, <strong>{user.first_name}</strong>
+            {user.is_admin ? (
+              <>
+                Olá <strong>Admin</strong>, {user.first_name}
+              </>
+            ) : (
+              <>Olá, {user.first_name}</>
+            )}
           </span>
-          <Button variant='danger' onClick={logout}>Sair</Button>
+          <Button variant="danger" onClick={logout}>
+            Sair
+          </Button>
         </S.UserArea>
       )}
     </S.Header>
