@@ -8,23 +8,6 @@ export const HomeContainer = styled.div`
   margin: 0 auto;
 `;
 
-export const WelcomeSection = styled.section`
-  padding: 1.5rem 0;
-
-  h2 {
-    font-size: clamp(1.5rem, 5vw, 2rem);
-    font-weight: 700;
-    color: #000;
-    margin: 0;
-  }
-
-  p {
-    color: #929090;
-    font-size: 1rem;
-    margin-top: 0.25rem;
-  }
-`;
-
 export const CarouselWrapper = styled.div`
   display: flex;
   gap: 1.25rem;

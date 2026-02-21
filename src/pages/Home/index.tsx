@@ -59,29 +59,23 @@ const menuItems: MenuItem[] = [
 ];
 
 const HomePage: React.FC = () => {
-  // 1. Chame o hook aqui no topo
   const navigate = useNavigate();
 
   return (
     <S.HomeContainer>
-      <S.WelcomeSection>
-        <h2>Olá, Luiz!</h2>
-        <p>Como está sua vida financeira hoje?</p>
-    </S.WelcomeSection>
-
-    <S.CarouselWrapper>
-    {menuItems.map((item) => (
-        <S.MenuCard key={item.id} onClick={() => navigate(item.path)}>
-  <div className="icon-area">
-    {item.icon}
-    </div>
-    <div>
-    <h3>{item.title}</h3>
-    <p>{item.description}</p>
-    </div>
-    </S.MenuCard>
-))}
-  </S.CarouselWrapper>
+        <S.CarouselWrapper>
+        {menuItems.map((item) => (
+            <S.MenuCard key={item.id} onClick={() => navigate(item.path)}>
+          <div className="icon-area">
+            {item.icon}
+          </div>
+          <div>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </div>
+        </S.MenuCard>
+    ))}
+      </S.CarouselWrapper>
   </S.HomeContainer>
 );
 };
