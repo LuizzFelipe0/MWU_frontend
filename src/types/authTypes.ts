@@ -8,7 +8,7 @@ export interface User {
   email: string;
   first_name: string;
   cpf: string;
-  created_at: string;
+  is_admin: boolean;
 }
 
 export interface LoginOutput {
