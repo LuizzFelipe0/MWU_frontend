@@ -1,47 +1,39 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  padding: 1rem;
+  width: 100%;
+  max-width: 40rem;
+  margin: 0 auto;
+`;
+
+export const HeaderActions = styled.div`
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  align-items: center;
 `;
 
 export const List = styled.div`
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const ListItem = styled.div`
-  padding: 12px;
+  padding: 1rem 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 0.0625rem solid #c5c9c7;
-  
-  &:last-child { border-bottom: none; }
-
+  border-bottom: 1px solid #f2f2f7;
   .info {
     display: flex;
     flex-direction: column;
-    span { font-size: 17px; color: #000; }
-    small { 
-      font-size: 13px; 
-      color: ${(props) => props.color || '#8e8e93'}; 
+    span {
+      font-weight: 500;
+      color: #000;
     }
-  }
-`;
-
-export const InputGroup = styled.div`
-  background: white;
-  padding: 10px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  display: flex;
-  gap: 10px;
-
-  input {
-    flex: 1;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    padding: 8px 12px;
-    background: #f2f2f7;
-    outline: none;
+    small {
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
   }
 `;
