@@ -1,27 +1,61 @@
 import styled from 'styled-components';
 
+export const PageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
+
 export const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+`;
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+`;
+
+export const InputGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #8e8e93;
+    padding-left: 0.2rem;
+  }
+`;
+
+export const ButtonGroup = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 0.5rem;
+`;
+
+export const FooterActions = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem;
-`;
+  gap: 1rem;
+  margin-top: 1rem;
 
+  p {
+    font-size: 0.9rem;
+    color: #8e8e93;
 
-export const InputGroup = styled.div`
-  background: white;
-  padding: 10px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  display: flex;
-  gap: 10px;
-
-  input {
-    flex: 1;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    padding: 8px 12px;
-    background: #f2f2f7;
-    outline: none;
+    a {
+      color: #32d177;
+      text-decoration: none;
+      font-weight: 600;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 `;
