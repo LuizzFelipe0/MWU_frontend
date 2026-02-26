@@ -6,6 +6,7 @@ import NotFoundPage from './pages/NotFound';
 import HomePage from './pages/Home';
 import { useAuth } from './hooks/useAuth.tsx';
 import LoginPage from './pages/Login';
+import AddCategoryTypePage from './pages/CategoryTypes/Add';
 
 const PrivateRoute = () => {
   const { user, loading } = useAuth();
@@ -20,10 +21,14 @@ const MWURoutes: React.FC = () => {
       <Route path="/login" element={<LoginPage />} />
 
       <Route element={<PrivateRoute />}>
-          <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="category/types" element={<CategoryTypesPage />} />
+              <Route path="category/types" element={<CategoryTypesPage />}>
+              <Route path="add" element={<AddCategoryTypePage />} />
+          </Route>
+
           <Route path="*" element={<NotFoundPage />} />
+
         </Route>
       </Route>
     </Routes>
