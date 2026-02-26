@@ -6,7 +6,7 @@ import { CategoryType, CategoryTypeInput } from '../../types/categoryTypeTypes';
 
 import * as S from './styles';
 import CardBox from '../../components/CardBox';
-import Button from '../../components/Button';
+import Button from '../../components/Button/DefaultButton';
 import SearchBar from '../../components/SearchBar';
 
 const CategoryTypesPage: React.FC = () => {
@@ -15,6 +15,7 @@ const CategoryTypesPage: React.FC = () => {
     CategoryType,
     CategoryTypeInput
   >(categoryTypeService);
+
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
@@ -56,7 +57,6 @@ const CategoryTypesPage: React.FC = () => {
         </S.List>
       </CardBox>
 
-      {/* O Outlet renderiza a página 'Add' por cima desta quando a rota for /add */}
       <Outlet context={{ refresh }} />
     </S.Container>
   );

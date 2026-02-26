@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './styles';
 import { useAuth } from '../../hooks/useAuth.tsx';
-import Button from '../Button';
+import Button from '../Button/DefaultButton';
 
 const Header: React.FC = () => {
   const { user, logout } = useAuth();
