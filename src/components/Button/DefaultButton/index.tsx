@@ -1,5 +1,5 @@
 import React, { ButtonHTMLAttributes } from 'react';
-import * as S from './styles';
+import * as S from './styles.ts';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: S.ButtonVariant;
