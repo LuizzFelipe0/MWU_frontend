@@ -6,9 +6,13 @@ import {
   CategoryType,
   CategoryTypeInput,
 } from '../../../types/categoryTypeTypes';
+
 import CardBox from '../../../components/CardBox';
-import Button from '../../../components/Button';
+import Button from '../../../components/Button/DefaultButton';
+import TextInput from '../../../components/Input/TextInput';
+import Overlay from '../../../components/Overlay';
 import * as S from './styles';
+import ToggleButton from '../../../components/Button/ToggleButton';
 
 const AddCategoryTypePage: React.FC = () => {
   const navigate = useNavigate();
@@ -20,65 +24,51 @@ const AddCategoryTypePage: React.FC = () => {
   const [name, setName] = useState('');
   const [isPositive, setIsPositive] = useState(false);
 
+  const handleClose = () => navigate('..');
+
   const handleSave = async () => {
     if (!name.trim()) return;
-
-    await add({
-      name: name,
-      is_positive: isPositive,
-    });
-
+    await add({ name, is_positive: isPositive });
     refresh();
-    navigate('..');
+    handleClose();
   };
 
   return (
-    <S.Overlay onClick={() => navigate('..')}>
-      <S.ModalContent onClick={(e) => e.stopPropagation()}>
-        <CardBox title="Novo Tipo de Categoria">
-          <S.Form>
-            <S.Field>
-              <label>Nome</label>
-              <input
-                placeholder="Ex: Receita, Investimentos..."
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                autoFocus
-              />
-            </S.Field>
+    <Overlay onClose={handleClose}>
+      <CardBox title="Novo Tipo de Categoria">
+        <S.Form>
+          <S.Field>
+            <label>Nome</label>
+            <TextInput
+              placeholder="Ex: Receita, Investimentos..."
+              value={name}
+              onChange={setName}
+            />
+          </S.Field>
 
-            <S.Field>
-              <label>Tipo de Fluxo</label>
-              <S.SegmentedControl>
-                <S.SegmentButton
-                  $active={!isPositive}
-                  $type="negative"
-                  onClick={() => setIsPositive(false)}
-                >
-                  Negativo (-)
-                </S.SegmentButton>
-                <S.SegmentButton
-                  $active={isPositive}
-                  $type="positive"
-                  onClick={() => setIsPositive(true)}
-                >
-                  Positivo (+)
-                </S.SegmentButton>
-              </S.SegmentedControl>
-            </S.Field>
+          <S.Field>
+            <label>Tipo de Fluxo</label>
+            <ToggleButton
+              selectedValue={isPositive}
+              onChange={setIsPositive}
+              options={[
+                { label: 'Negativo (-)', value: false, variant: 'negative' },
+                { label: 'Positivo (+)', value: true, variant: 'positive' },
+              ]}
+            />
+          </S.Field>
 
-            <S.Actions>
-              <Button variant="danger" onClick={() => navigate('..')}>
-                Cancelar
-              </Button>
-              <Button onClick={handleSave} disabled={loading}>
-                {loading ? 'Salvando...' : 'Salvar'}
-              </Button>
-            </S.Actions>
-          </S.Form>
-        </CardBox>
-      </S.ModalContent>
-    </S.Overlay>
+          <S.Actions>
+            <Button variant="danger" onClick={handleClose}>
+              Cancelar
+            </Button>
+            <Button onClick={handleSave} disabled={loading}>
+              {loading ? 'Salvando...' : 'Salvar'}
+            </Button>
+          </S.Actions>
+        </S.Form>
+      </CardBox>
+    </Overlay>
   );
 };
 
