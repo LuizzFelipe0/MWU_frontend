@@ -7,6 +7,7 @@ import EmailInput from '../../components/Input/EmailInput';
 import PasswordInput from '../../components/Input/PasswordInput';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import Form from '../../components/Form';
 import * as S from './styles';
 
 const LoginPage: React.FC = () => {
@@ -30,25 +31,27 @@ const LoginPage: React.FC = () => {
       <Header />
       <S.Container>
         <CardBox title="MWU Login">
-          <S.Form onSubmit={handleSubmit}>
-            <S.InputGroup>
+          <Form onSubmit={handleSubmit}>
+            <Form.Field>
               <label>E-mail</label>
               <EmailInput value={email} onChange={setEmail} />
-            </S.InputGroup>
+            </Form.Field>
 
-            <S.InputGroup>
+            <Form.Field>
               <label>Senha</label>
               <PasswordInput value={password} onChange={setPassword} />
-            </S.InputGroup>
-            <S.ButtonGroup>
+            </Form.Field>
+
+            <Form.Actions $align="stretch">
               <Button type="submit">Entrar</Button>
-            </S.ButtonGroup>
-            <S.FooterActions>
+            </Form.Actions>
+
+            <Form.Footer>
               <p>
                 Não possui conta? <Link to="/register">Cadastre-se</Link>
               </p>
-            </S.FooterActions>
-          </S.Form>
+            </Form.Footer>
+          </Form>
         </CardBox>
       </S.Container>
       <Footer />

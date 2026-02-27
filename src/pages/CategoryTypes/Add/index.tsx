@@ -2,17 +2,14 @@ import React, { useState } from 'react';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 import { useApi } from '../../../hooks/useApi';
 import { categoryTypeService } from '../../../services/categoryTypeService';
-import {
-  CategoryType,
-  CategoryTypeInput,
-} from '../../../types/categoryTypeTypes';
+import { CategoryType,CategoryTypeInput} from '../../../types/categoryTypeTypes';
 
 import CardBox from '../../../components/CardBox';
 import Button from '../../../components/Button/DefaultButton';
 import TextInput from '../../../components/Input/TextInput';
 import Overlay from '../../../components/Overlay';
-import * as S from './styles';
 import ToggleButton from '../../../components/Button/ToggleButton';
+import Form from '../../../components/Form';
 
 const AddCategoryTypePage: React.FC = () => {
   const navigate = useNavigate();
@@ -36,17 +33,22 @@ const AddCategoryTypePage: React.FC = () => {
   return (
     <Overlay onClose={handleClose}>
       <CardBox title="Novo Tipo de Categoria">
-        <S.Form>
-          <S.Field>
+        <Form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSave();
+          }}
+        >
+          <Form.Field>
             <label>Nome</label>
             <TextInput
               placeholder="Ex: Receita, Investimentos..."
               value={name}
               onChange={setName}
             />
-          </S.Field>
+          </Form.Field>
 
-          <S.Field>
+          <Form.Field>
             <label>Tipo de Fluxo</label>
             <ToggleButton
               selectedValue={isPositive}
@@ -56,17 +58,17 @@ const AddCategoryTypePage: React.FC = () => {
                 { label: 'Positivo (+)', value: true, variant: 'positive' },
               ]}
             />
-          </S.Field>
+          </Form.Field>
 
-          <S.Actions>
-            <Button variant="danger" onClick={handleClose}>
+          <Form.Actions $align="stretch">
+            <Button variant="danger" type="button" onClick={handleClose}>
               Cancelar
             </Button>
-            <Button onClick={handleSave} disabled={loading}>
+            <Button type="submit" disabled={loading}>
               {loading ? 'Salvando...' : 'Salvar'}
             </Button>
-          </S.Actions>
-        </S.Form>
+          </Form.Actions>
+        </Form>
       </CardBox>
     </Overlay>
   );
