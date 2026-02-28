@@ -86,7 +86,7 @@ const UpdateFinancialGoalPage: React.FC = () => {
   return (
     <>
       <Overlay onClose={handleClose}>
-        <CardBox title={item ? `Editar Meta` : 'Carregando...'}>
+        <CardBox title={item ? `${item.name}` : 'Carregando...'}>
           <Form
             onSubmit={(e) => {
               e.preventDefault();
