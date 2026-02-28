@@ -8,14 +8,13 @@ import * as S from './styles';
 import CardBox from '../../components/CardBox';
 import Button from '../../components/Button/DefaultButton';
 import SearchBar from '../../components/SearchBar';
+import List from '../../components/List';
 
 const CategoryTypesPage: React.FC = () => {
   const navigate = useNavigate();
-  const { data, refresh, remove } = useApi<
-    CategoryType,
-    CategoryTypeInput
-  >(categoryTypeService);
-
+  const { data, refresh } = useApi<CategoryType, CategoryTypeInput>(
+    categoryTypeService,
+  );
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
@@ -35,26 +34,35 @@ const CategoryTypesPage: React.FC = () => {
             value={searchTerm}
             onChange={setSearchTerm}
           />
-          <Button onClick={() => navigate('add')}>Adicionar</Button>
+          <Button icon="add" onClick={() => navigate('add')}></Button>
         </S.HeaderActions>
 
-        <S.List>
+        <List>
           {filteredData.map((cat) => (
-            <S.ListItem key={cat.id}>
-              <div className="info">
-                <span>{cat.name}</span>
+            <List.Item key={cat.id}>
+              <List.Info>
+                <S.ItemTitle>{cat.name}</S.ItemTitle>
                 <small
                   style={{ color: cat.is_positive ? '#32d177' : '#ff3b30' }}
                 >
                   {cat.is_positive ? 'Positivo' : 'Negativo'}
                 </small>
-              </div>
-              <Button variant="danger" onClick={() => remove(cat.id)}>
-                Apagar
-              </Button>
-            </S.ListItem>
+              </List.Info>
+
+              <List.Actions>
+                <Button
+                  icon="update"
+                  variant="warning"
+                  onClick={() => navigate(cat.id)}
+                ></Button>
+              </List.Actions>
+            </List.Item>
           ))}
-        </S.List>
+        </List>
+
+        {filteredData.length === 0 && (
+          <S.EmptyState>Nenhum Tipo de Categoria encontrado.</S.EmptyState>
+        )}
       </CardBox>
 
       <Outlet context={{ refresh }} />

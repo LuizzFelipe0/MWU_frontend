@@ -13,27 +13,18 @@ export const HeaderActions = styled.div`
   align-items: center;
 `;
 
-export const List = styled.div`
-  display: flex;
-  flex-direction: column;
+export const ItemTitle = styled.span`
+  font-weight: 500;
+  color: #000;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
 `;
 
-export const ListItem = styled.div`
-  padding: 1rem 0.5rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #f2f2f7;
-  .info {
-    display: flex;
-    flex-direction: column;
-    span {
-      font-weight: 500;
-      color: #000;
-    }
-    small {
-      font-weight: 600;
-      font-size: 0.8rem;
-    }
-  }
+export const EmptyState = styled.p`
+  text-align: center;
+  color: #929090;
+  padding: 2.5rem 1rem;
+  font-size: 0.95rem;
+  border-radius: 12px;
+  margin-top: 1rem;
 `;
