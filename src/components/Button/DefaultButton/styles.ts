@@ -1,16 +1,25 @@
 import styled from 'styled-components';
 
-export type ButtonVariant = 'primary' | 'danger';
+export type ButtonVariant = 'primary' | 'danger' | 'warning';
 
 export const Button = styled.button<{ $variant: ButtonVariant }>`
-  background-color: ${(props) =>
-    props.$variant === 'danger' ? '#ff3b30' : '#32d177'};
+  background-color: ${(props) => {
+    switch (props.$variant) {
+      case 'danger':
+        return '#ff3b30';
+      case 'warning':
+        return '#efce09';
+      case 'primary':
+      default:
+        return '#32d177';
+    }
+  }};
 
   color: #ffffff;
   border: none;
 
   padding: 0.6rem 1.2rem;
-  border-radius: 9px; 
+  border-radius: 9px;
 
   font-size: 0.9rem;
   font-weight: 600;
@@ -35,4 +44,11 @@ export const Button = styled.button<{ $variant: ButtonVariant }>`
     background-color: #c5c9c7;
     cursor: not-allowed;
   }
+`;
+
+export const Icon = styled.img`
+  width: 1rem;
+  height: 1rem;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
 `;
