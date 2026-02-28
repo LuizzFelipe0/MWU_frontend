@@ -8,3 +8,12 @@ export const parseCurrencyToNumber = (value: string): number => {
 
   return isNaN(result) ? 0 : result;
 };
+
+
+// Converts number to BRL string
+export const formatNumberToCurrency = (value: number): string => {
+  return new Intl.NumberFormat('pt-BR', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(value);
+};
