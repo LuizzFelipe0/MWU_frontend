@@ -64,7 +64,7 @@ const AddCategoryTypePage: React.FC = () => {
             <Button variant="danger" type="button" onClick={handleClose}>
               Cancelar
             </Button>
-            <Button type="submit" disabled={loading}>
+            <Button type="submit" disabled={loading} icon='add'>
               {loading ? 'Salvando...' : 'Salvar'}
             </Button>
           </Form.Actions>
