@@ -45,7 +45,7 @@ const menuItems: MenuItem[] = [
     id: 5,
     title: 'Metas Financeiras',
     description: 'Planeje seus sonhos e objetivos.',
-    path: '/goals',
+      path: '/financial-goals',
     icon: '🎯',
   },
   {
