@@ -11,6 +11,9 @@ import UpdateCategoryTypePage from './pages/CategoryTypes/Update';
 import FinancialGoalsPage from './pages/FinancialGoals';
 import AddFinancialGoalPage from './pages/FinancialGoals/Add';
 import UpdateFinancialGoalPage from './pages/FinancialGoals/Update';
+import CategoriesPage from './pages/Categories';
+import AddCategoryPage from './pages/Categories/Add';
+import UpdateCategoryPage from './pages/Categories/Update';
 
 const PrivateRoute = () => {
   const { user, loading } = useAuth();
@@ -27,6 +30,11 @@ const MWURoutes: React.FC = () => {
       <Route element={<PrivateRoute />}>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
+
+          <Route path="categories" element={<CategoriesPage />}>
+            <Route path="add" element={<AddCategoryPage />} />
+            <Route path=":id" element={<UpdateCategoryPage />} />
+          </Route>
 
           <Route path="category/types" element={<CategoryTypesPage />}>
             <Route path="add" element={<AddCategoryTypePage />} />
