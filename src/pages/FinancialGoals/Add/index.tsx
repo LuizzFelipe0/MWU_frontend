@@ -19,7 +19,7 @@ import { parseCurrencyToNumber } from '../../../utils/currency.ts';
 
 const AddFinancialGoalPage: React.FC = () => {
   const navigate = useNavigate();
-  const { user } = useAuth(); // Pegamos o usuário logado
+  const { user } = useAuth();
   const { refresh } = useOutletContext<{ refresh: () => void }>();
   const { add, loading } = useApi<FinancialGoal, FinancialGoalInput>(
     financialGoalService,
