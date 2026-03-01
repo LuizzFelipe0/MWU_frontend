@@ -9,7 +9,7 @@ export const categoryService: BaseService<Category, CategoryInput> =
       return res.data;
     },
     getById: async (id: string) => {
-      const res = await mwu_api.get('/categories/${id}');
+      const res = await mwu_api.get(`/categories/${id}`);
       return res.data;
     },
     create: async (data: CategoryInput) => {
@@ -17,10 +17,10 @@ export const categoryService: BaseService<Category, CategoryInput> =
       return res.data;
     },
     update: async (id: string, data: CategoryInput) => {
-      const res = await mwu_api.patch('/categories/${id}/update', data);
+      const res = await mwu_api.patch(`/categories/${id}/update`, data);
       return res.data;
     },
     delete: async (id: string) => {
-      await mwu_api.delete('/categories/${id}/delete');
+      await mwu_api.delete(`/categories/${id}/delete`);
     },
   };
