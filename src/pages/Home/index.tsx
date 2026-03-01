@@ -45,7 +45,7 @@ const menuItems: MenuItem[] = [
     id: 5,
     title: 'Metas Financeiras',
     description: 'Planeje seus sonhos e objetivos.',
-      path: '/financial-goals',
+    path: '/financial-goals',
     icon: '🎯',
   },
   {
@@ -55,7 +55,6 @@ const menuItems: MenuItem[] = [
     path: '/accounts',
     icon: '🏦',
   },
-
 ];
 
 const HomePage: React.FC = () => {
@@ -63,21 +62,19 @@ const HomePage: React.FC = () => {
 
   return (
     <S.HomeContainer>
-        <S.CarouselWrapper>
+      <S.GridContainer>
         {menuItems.map((item) => (
-            <S.MenuCard key={item.id} onClick={() => navigate(item.path)}>
-          <div className="icon-area">
-            {item.icon}
-          </div>
-          <div>
-            <h3>{item.title}</h3>
-            <p>{item.description}</p>
-          </div>
-        </S.MenuCard>
-    ))}
-      </S.CarouselWrapper>
-  </S.HomeContainer>
-);
+          <S.MenuCard key={item.id} onClick={() => navigate(item.path)}>
+            <div className="icon-area">{item.icon}</div>
+            <div className="text-content">
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+          </S.MenuCard>
+        ))}
+      </S.GridContainer>
+    </S.HomeContainer>
+  );
 };
 
 export default HomePage;

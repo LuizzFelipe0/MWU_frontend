@@ -6,67 +6,57 @@ export const HomeContainer = styled.div`
   width: 100%;
   max-width: 64rem;
   margin: 0 auto;
+  padding: 1rem;
 `;
 
-export const CarouselWrapper = styled.div`
-  display: flex;
-  gap: 1.25rem;
-  overflow-x: auto;
-  padding: 1rem 0.5rem 2rem 0.5rem;
-
-  /* Efeito Carrossel Nativo */
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-
-  /* Esconder barra de scroll mas manter funcionalidade */
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+export const GridContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 1rem 0;
 
   @media (min-width: 48rem) {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-    overflow-x: visible;
-    scroll-snap-type: none;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    gap: 1.5rem;
   }
 `;
 
 export const MenuCard = styled.div`
-  /* Estilo do Card iOS */
-  min-width: 14rem; 
   background: #fff;
   border-radius: 24px;
-  padding: 1.5rem;
+  padding: 1.2rem;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 10rem;
+  align-items: center;
+  gap: 1.2rem;
 
-  scroll-snap-align: center;
   border: 0.0625rem solid #e5e5ea;
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
   cursor: pointer;
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
-
   &:active {
     transform: scale(0.95);
     background-color: #f2f2f7;
   }
 
   .icon-area {
-    width: 3.5rem;
-    height: 3.5rem;
-    background-color: #32d177; /* Verde Primário */
-    border-radius: 1rem;
+    width: 3rem;
+    height: 3rem;
+    min-width: 3rem;
+    background-color: #32d177;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
-    color: white;
+    color: #fff;
+  }
+
+  .text-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
   }
 
   h3 {
@@ -83,6 +73,19 @@ export const MenuCard = styled.div`
   }
 
   @media (min-width: 48rem) {
-    min-width: unset; /* No desktop ele respeita o grid */
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 11rem;
+    padding: 1.5rem;
+
+    .icon-area {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+    }
   }
 `;
