@@ -17,13 +17,13 @@ export interface Transaction {
 
 export interface TransactionInput {
   user_id: string;
-  account_id: string;
+  account_id?: string;
   category_id: string;
   name: string;
-  description: string;
+  description?: string;
   amount: number;
   date: string;
   is_recurring: boolean;
-  recurrence_interval: string;
-  next_due_date: string;
+  recurrence_interval?: string;
+  next_due_date?: string;
 }
