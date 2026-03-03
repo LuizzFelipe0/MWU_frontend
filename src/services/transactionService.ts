@@ -25,24 +25,5 @@ export const transactionService = {
 
   delete: async (id: string) => {
     await mwu_api.delete(`/transactions/${id}/delete`);
-  },
-
-  getDeleted: async (): Promise<Transaction[]> => {
-    const res = await mwu_api.get('/transactions/deleted');
-    return res.data;
-  },
-
-  getByUser: async (userId: string): Promise<Transaction[]> => {
-    const res = await mwu_api.get(`/transactions/${userId}/user`);
-    return res.data;
-  },
-
-  restore: async (id: string): Promise<Transaction> => {
-    const res = await mwu_api.post(`/transactions/${id}/restore`);
-    return res.data;
-  },
-
-  forceDelete: async (id: string): Promise<void> => {
-    await mwu_api.delete(`/transactions/${id}/force-delete`);
-  },
+  }
 } satisfies BaseService<Transaction, TransactionInput>;
