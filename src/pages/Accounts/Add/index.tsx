@@ -16,6 +16,7 @@ import Form from '../../../components/Form';
 import NumberInput from '../../../components/Input/NumberInput';
 import { parseCurrencyToNumber } from '../../../utils/currency.ts';
 import SelectInput from '../../../components/Input/SelectInput';
+import { account_type_options } from '../../../utils/mappings.ts';
 
 const AddAccountPage: React.FC = () => {
   const navigate = useNavigate();
@@ -27,14 +28,6 @@ const AddAccountPage: React.FC = () => {
   const [accountNumber, setAccountNumber] = useState('');
   const [balanceFormatted, setBalanceFormatted] = useState('0,00');
   const [type, setType] = useState('');
-
-  const account_type_options = [
-    { value: 'Corrente', label: 'Conta Corrente' },
-    { value: 'Poupança', label: 'Conta Poupança' },
-    { value: 'Digital', label: 'Conta Digital' },
-    { value: 'Salário', label: 'Conta Salário' },
-    { value: 'Investimento', label: 'Conta de Investimentos' },
-  ];
 
   const handleClose = () => navigate('..');
 

@@ -32,7 +32,7 @@ const AddCategoryPage: React.FC = () => {
 
   const {
     data: categoryTypes,
-    refresh: fetchTypes,
+    refresh: getCategoryTypes,
     loading: isLoadingTypes,
   } = useApi<CategoryType, CategoryTypeInput>(categoryTypeService);
 
@@ -41,8 +41,8 @@ const AddCategoryPage: React.FC = () => {
   const [categoryTypeId, setCategoryTypeId] = useState('');
 
   useEffect(() => {
-    fetchTypes();
-  }, [fetchTypes]);
+    getCategoryTypes();
+  }, [getCategoryTypes]);
 
   const handleClose = () => navigate('..');
 
