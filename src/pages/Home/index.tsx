@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as S from './styles';
+import { useAuth } from '../../hooks/useAuth.tsx';
 
 interface MenuItem {
   id: number;
@@ -59,11 +60,21 @@ const menuItems: MenuItem[] = [
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
+
+  const nonVisibleMenuItems = menuItems.filter((item) => {
+
+    if (user?.is_admin == false && item.path === '/category/types') {
+      return false;
+    }
+    return true;
+  });
 
   return (
     <S.HomeContainer>
       <S.GridContainer>
-        {menuItems.map((item) => (
+
+        {nonVisibleMenuItems.map((item) => (
           <S.MenuCard key={item.id} onClick={() => navigate(item.path)}>
             <div className="icon-area">{item.icon}</div>
             <div className="text-content">
@@ -72,9 +83,11 @@ const HomePage: React.FC = () => {
             </div>
           </S.MenuCard>
         ))}
+
       </S.GridContainer>
     </S.HomeContainer>
   );
 };
+
 
 export default HomePage;
