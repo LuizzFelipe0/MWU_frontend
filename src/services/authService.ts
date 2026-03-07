@@ -1,5 +1,5 @@
 import { mwu_api } from '../api';
-import { LoginInput, LoginOutput } from '../types/authTypes';
+import { LoginInput, LoginOutput } from '../types/userTypes.ts';
 
 export const authService = {
   login: async (data: LoginInput): Promise<LoginOutput> => {
