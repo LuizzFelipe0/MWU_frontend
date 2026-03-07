@@ -20,6 +20,8 @@ import UpdateAccountPage from './pages/Accounts/Update';
 import TransactionsPage from './pages/Transactions';
 import AddTransactionPage from './pages/Transactions/Add';
 import UpdateTransactionPage from './pages/Transactions/Update';
+import AddUserPage from './pages/User/Add';
+import UsersPage from './pages/User';
 
 const PrivateRoute = () => {
   const { user, loading } = useAuth();
@@ -28,14 +30,32 @@ const PrivateRoute = () => {
   return user ? <Outlet /> : <Navigate to="/login" />;
 };
 
+const AdminRoute = () => {
+  const { user, loading } = useAuth();
+
+  if (loading) return null;
+  return user?.is_admin ? <Outlet /> : <Navigate to="/" replace />;
+};
+
 const MWURoutes: React.FC = () => {
+  const { user } = useAuth();
+
   return (
     <Routes>
-      <Route path="/login" element={<LoginPage />} />
+      <Route
+        path="/login"
+        element={!user ? <LoginPage /> : <Navigate to="/" />}
+      />
+      <Route
+        path="/register"
+        element={!user ? <AddUserPage /> : <Navigate to="/" />}
+      />
 
       <Route element={<PrivateRoute />}>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
+
+          {/* <Route path="profile" element={<UpdateUserPage />} />*/}
 
           <Route path="accounts" element={<AccountsPage />}>
             <Route path="add" element={<AddAccountPage />} />
@@ -47,11 +67,6 @@ const MWURoutes: React.FC = () => {
             <Route path=":id" element={<UpdateCategoryPage />} />
           </Route>
 
-          <Route path="category/types" element={<CategoryTypesPage />}>
-            <Route path="add" element={<AddCategoryTypePage />} />
-            <Route path=":id" element={<UpdateCategoryTypePage />} />
-          </Route>
-
           <Route path="financial-goals" element={<FinancialGoalsPage />}>
             <Route path="add" element={<AddFinancialGoalPage />} />
             <Route path=":id" element={<UpdateFinancialGoalPage />} />
@@ -60,6 +75,17 @@ const MWURoutes: React.FC = () => {
           <Route path="transactions" element={<TransactionsPage />}>
             <Route path="add" element={<AddTransactionPage />} />
             <Route path=":id" element={<UpdateTransactionPage />} />
+          </Route>
+
+          <Route element={<AdminRoute />}>
+            <Route path="category/types" element={<CategoryTypesPage />}>
+              <Route path="add" element={<AddCategoryTypePage />} />
+              <Route path=":id" element={<UpdateCategoryTypePage />} />
+            </Route>
+
+            <Route path="users" element={<UsersPage />}>
+              {/*<Route path=":id" element={<UpdateUserPage />} />*/}
+            </Route>
           </Route>
 
           <Route path="*" element={<NotFoundPage />} />
