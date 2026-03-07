@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 
 export interface BaseService<T, I> {
   getAll: () => Promise<T[]>;
@@ -8,7 +8,7 @@ export interface BaseService<T, I> {
   delete: (id: string) => Promise<void>;
 }
 
-export function useApi<T, I>(service: BaseService<T, I>) {
+export function useApi<T, I>(service: BaseService<T, I>, autoFetch = false) {
   const [data, setData] = useState<T[]>([]);
   const [item, setItem] = useState<T | null>(null);
   const [loading, setLoading] = useState(false);
@@ -73,6 +73,13 @@ export function useApi<T, I>(service: BaseService<T, I>) {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (autoFetch) {
+      refresh();
+    }
+  }, [autoFetch, refresh]);
+
 
   return { data, item, loading, error, refresh, getOne, add, edit, remove };
 }
