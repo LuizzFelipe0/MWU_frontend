@@ -126,7 +126,7 @@ const UpdateTransactionPage: React.FC = () => {
   return (
     <>
       <Overlay onClose={handleClose}>
-        <CardBox title={item ? `Editar: ${item.name}` : 'Carregando...'}>
+        <CardBox title={item ? `${item.name}` : 'Carregando...'}>
           <Form
             onSubmit={(e) => {
               e.preventDefault();

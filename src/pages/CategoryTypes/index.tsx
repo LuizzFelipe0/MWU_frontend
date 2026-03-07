@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useApi } from '../../hooks/useApi';
 import { categoryTypeService } from '../../services/categoryTypeService';
@@ -9,21 +9,17 @@ import CardBox from '../../components/CardBox';
 import Button from '../../components/Button/DefaultButton';
 import SearchBar from '../../components/SearchBar';
 import List from '../../components/List';
+import { useFilter } from '../../hooks/useFilter.tsx';
 
 const CategoryTypesPage: React.FC = () => {
   const navigate = useNavigate();
   const { data, refresh } = useApi<CategoryType, CategoryTypeInput>(
     categoryTypeService,
+    true
   );
   const [searchTerm, setSearchTerm] = useState('');
 
-  useEffect(() => {
-    refresh();
-  }, [refresh]);
-
-  const filteredData = data.filter((cat) =>
-    cat.name.toLowerCase().includes(searchTerm.toLowerCase()),
-  );
+  const filteredData = useFilter(data, searchTerm, 'name');
 
   return (
     <S.Container>

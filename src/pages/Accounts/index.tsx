@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { useApi } from '../../hooks/useApi';
 import { accountService } from '../../services/accountService.ts';
@@ -9,19 +9,17 @@ import CardBox from '../../components/CardBox';
 import Button from '../../components/Button/DefaultButton';
 import SearchBar from '../../components/SearchBar';
 import List from '../../components/List';
+import { useFilter } from '../../hooks/useFilter.tsx';
 
 const AccountsPage: React.FC = () => {
   const navigate = useNavigate();
-  const { data, refresh } = useApi<Account, AccountInput>(accountService);
+  const { data, refresh } = useApi<Account, AccountInput>(
+    accountService,
+    true,
+  );
   const [searchTerm, setSearchTerm] = useState('');
 
-  useEffect(() => {
-    refresh();
-  }, [refresh]);
-
-  const filteredData = data.filter((accounts) =>
-    accounts.name.toLowerCase().includes(searchTerm.toLowerCase()),
-  );
+  const filteredData = useFilter(data, searchTerm, 'name');
 
   return (
     <S.Container>
