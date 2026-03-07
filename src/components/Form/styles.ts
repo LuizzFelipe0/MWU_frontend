@@ -18,6 +18,12 @@ export const Field = styled.div`
     color: #8e8e93;
     padding-left: 0.2rem;
   }
+  a {
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #8e8e93;
+    padding-left: 0.2rem;
+  }
 `;
 
 export const Actions = styled.div<{ $align?: 'center' | 'right' | 'stretch' }>`
