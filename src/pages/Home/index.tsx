@@ -56,6 +56,13 @@ const menuItems: MenuItem[] = [
     path: '/accounts',
     icon: '🏦',
   },
+  {
+    id: 7,
+    title: 'Usuários',
+    description: 'Usuários cadastrados no sistema.',
+    path: '/users',
+    icon: '👤',
+  },
 ];
 
 const HomePage: React.FC = () => {
@@ -65,6 +72,9 @@ const HomePage: React.FC = () => {
   const nonVisibleMenuItems = menuItems.filter((item) => {
 
     if (user?.is_admin == false && item.path === '/category/types') {
+      return false;
+    }
+    if (user?.is_admin == false && item.path === '/users') {
       return false;
     }
     return true;
