@@ -2,16 +2,19 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   background: #fff;
-  border-radius: 12px; 
+  border-radius: 12px;
   padding: 1.5rem;
 
   /* Responsividade */
   max-width: 50rem;
-  
+
   box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.05);
   border: 0.0625rem solid #e5e5ea;
-    
-  box-sizing: border-box;
+
+  /* Scroll */
+  display: flex;
+  flex-direction: column;
+  max-height: 34rem;
 `;
 
 export const CardHeader = styled.header`
@@ -29,4 +32,21 @@ export const CardHeader = styled.header`
 `;
 
 export const Content = styled.div`
+  overflow-y: auto;
+  padding: 0.4rem;
+
+  /* Estilo do Scroll */
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #e5e5ea;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: #c5c9c7;
+  }
 `;
