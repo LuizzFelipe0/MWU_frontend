@@ -7,11 +7,14 @@ import trashIcon from '../../../assets/bin.png';
 import plusIcon from '../../../assets/plus.png';
 // @ts-ignore
 import pencilIcon from '../../../assets/pencil.png';
+// @ts-ignore
+import clearFilterIcon from '../../../assets/clear-filter.png';
 
 const iconMap = {
   delete: trashIcon,
   add: plusIcon,
   update: pencilIcon,
+  clear: clearFilterIcon,
 };
 
 export type IconType = keyof typeof iconMap;

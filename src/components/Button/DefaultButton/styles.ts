@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export type ButtonVariant = 'primary' | 'danger' | 'warning';
+export type ButtonVariant = 'primary' | 'danger' | 'warning' | 'neutral';
 
 export const Button = styled.button<{ $variant: ButtonVariant }>`
   background-color: ${(props) => {
@@ -9,6 +9,8 @@ export const Button = styled.button<{ $variant: ButtonVariant }>`
         return '#ff3b30';
       case 'warning':
         return '#efce09';
+      case 'neutral':
+        return '#929090';
       case 'primary':
       default:
         return '#32d177';
