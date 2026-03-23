@@ -47,3 +47,15 @@ export const UserArea = styled.div`
     color: #32d177;
   }
 `;
+
+export const LogoIcon = styled.img`
+  height: 2.2rem;
+  width: auto;
+  margin-right: 0.8rem;
+  object-fit: contain;
+
+  @media (max-width: 768px) {
+    height: 1.8rem;
+    margin-right: 0.5rem;
+  }
+`;

@@ -2,6 +2,8 @@ import React from 'react';
 import * as S from './styles';
 import { useAuth } from '../../hooks/useAuth.tsx';
 import Button from '../Button/DefaultButton';
+// @ts-ignore
+import logoIcon from '../../assets/mwu-piggy-bank.png';
 
 const Header: React.FC = () => {
   const { user, logout } = useAuth();
@@ -9,6 +11,7 @@ const Header: React.FC = () => {
   return (
     <S.Header>
       <S.HeaderLink to="/">
+        <S.LogoIcon src={logoIcon} alt="MWU Logo" />
         <S.Title>MWU - Money With U</S.Title>
       </S.HeaderLink>
 
