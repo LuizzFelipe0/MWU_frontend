@@ -60,6 +60,7 @@ const UpdateTransactionPage: React.FC = () => {
   const [isRecurring, setIsRecurring] = useState(false);
   const [recurrenceInterval, setRecurrenceInterval] = useState('');
   const [nextDueDate, setNextDueDate] = useState('');
+  const [endDate, setEndDate] = useState('');
 
   useEffect(() => {
     if (id) {
@@ -75,11 +76,18 @@ const UpdateTransactionPage: React.FC = () => {
       setDescription(item.description || '');
       setCategoryId(item.category_id);
       setAccountId(item.account_id || '');
-      setIsRecurring(item.is_recurring);
+      setIsRecurring(!!item.recurrence_id);
       setRecurrenceInterval(item.recurrence_interval || '');
 
       setDate(item.date.split('T')[0]);
-      if (item.next_due_date) setNextDueDate(item.next_due_date.split('T')[0]);
+
+      if (item.next_due_date) {
+        setNextDueDate(item.next_due_date.split('T')[0]);
+      }
+
+      if (item.end_date) {
+        setEndDate(item.end_date.split('T')[0]);
+      }
 
       setAmountFormatted(
         new Intl.NumberFormat('pt-BR', {
@@ -109,6 +117,8 @@ const UpdateTransactionPage: React.FC = () => {
         isRecurring && nextDueDate
           ? new Date(nextDueDate).toISOString()
           : undefined,
+      end_date:
+        isRecurring && endDate ? new Date(endDate).toISOString() : undefined,
     });
 
     refreshParentList();
@@ -174,6 +184,11 @@ const UpdateTransactionPage: React.FC = () => {
             </Form.Field>
 
             <Form.Field>
+              <label>Descrição</label>
+              <TextInput value={description} onChange={setDescription} />
+            </Form.Field>
+
+            <Form.Field>
               <label>Transação Recorrente?</label>
               <ToggleButton
                 selectedValue={isRecurring}
@@ -196,16 +211,15 @@ const UpdateTransactionPage: React.FC = () => {
                   />
                 </Form.Field>
                 <Form.Field>
-                  <label>Próximo Vencimento</label>
+                  <label>Próximo Vencimento (Opcional)</label>
                   <DateInput value={nextDueDate} onChange={setNextDueDate} />
+                </Form.Field>
+                <Form.Field>
+                  <label>Último Vencimento (Opcional)</label>
+                  <DateInput value={endDate} onChange={setEndDate} />
                 </Form.Field>
               </>
             )}
-
-            <Form.Field>
-              <label>Descrição</label>
-              <TextInput value={description} onChange={setDescription} />
-            </Form.Field>
 
             <Form.Actions $align="stretch">
               <Button
