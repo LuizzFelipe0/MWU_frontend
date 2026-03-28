@@ -20,6 +20,7 @@ import UpdateAccountPage from './pages/Accounts/Update';
 import TransactionsPage from './pages/Transactions';
 import AddTransactionPage from './pages/Transactions/Add';
 import UpdateTransactionPage from './pages/Transactions/Update';
+import DashboardPage from './pages/Dashboard';
 import AddUserPage from './pages/User/Add';
 import UsersPage from './pages/User';
 
@@ -54,6 +55,7 @@ const MWURoutes: React.FC = () => {
       <Route element={<PrivateRoute />}>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
+          <Route path="dashboard" element={<DashboardPage />} />
 
           {/* <Route path="profile" element={<UpdateUserPage />} />*/}
 
