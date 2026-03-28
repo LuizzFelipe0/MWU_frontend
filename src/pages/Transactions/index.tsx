@@ -31,8 +31,10 @@ const TransactionsPage: React.FC = () => {
   );
 
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedYear, setSelectedYear] = useState('');
-  const [selectedMonth, setSelectedMonth] = useState('');
+  const [selectedYear, setSelectedYear] = useState(
+    new Date().getFullYear().toString(),);
+  const [selectedMonth, setSelectedMonth] = useState(
+    (new Date().getMonth() + 1).toString().padStart(2, '0'),);
   const [selectedAccountId, setSelectedAccountId] = useState('');
 
   const yearOptions = useMemo(
