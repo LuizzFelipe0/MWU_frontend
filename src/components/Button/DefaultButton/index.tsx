@@ -9,12 +9,15 @@ import plusIcon from '../../../assets/plus.png';
 import pencilIcon from '../../../assets/pencil.png';
 // @ts-ignore
 import clearFilterIcon from '../../../assets/clear-filter.png';
+// @ts-ignore
+import settingsIcon from '../../../assets/settings.png';
 
 const iconMap = {
   delete: trashIcon,
   add: plusIcon,
   update: pencilIcon,
   clear: clearFilterIcon,
+  settings: settingsIcon,
 };
 
 export type IconType = keyof typeof iconMap;

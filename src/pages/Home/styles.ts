@@ -4,9 +4,6 @@ export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 64rem;
-  margin: 0 auto;
-  padding: 1rem;
 `;
 
 export const GridContainer = styled.div`
@@ -24,26 +21,25 @@ export const GridContainer = styled.div`
 export const MenuCard = styled.div`
   background: #fff;
   border-radius: 24px;
-  padding: 1.2rem;
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1rem;
 
   border: 0.0625rem solid #e5e5ea;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
   cursor: pointer;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+  transition: transform 0.2s ease,
+  box-shadow 0.2s ease;
+
   &:active {
     transform: scale(0.95);
     background-color: #f2f2f7;
   }
 
   .icon-area {
-    width: 3rem;
-    height: 3rem;
-    min-width: 3rem;
+    width: 2rem;
+    height: 2rem;
+    min-width: 2rem;
     background-color: #32d177;
     border-radius: 12px;
     display: flex;
@@ -72,16 +68,16 @@ export const MenuCard = styled.div`
     margin-top: 0.5rem;
   }
 
-  @media (min-width: 48rem) {
+  @media (min-width: 46rem) {
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
-    height: 11rem;
-    padding: 1.5rem;
+    height: 10rem;
+    padding: 1.4rem;
 
     .icon-area {
-      width: 3.5rem;
-      height: 3.5rem;
+      width: 3rem;
+      height: 3rem;
     }
 
     h3 {

@@ -15,6 +15,7 @@ interface SelectInputProps {
   onChange: (value: string) => void;
   placeholder?: string;
   required?: boolean;
+  icon?: string;
 }
 
 const SelectInput: React.FC<SelectInputProps> = ({
@@ -23,13 +24,14 @@ const SelectInput: React.FC<SelectInputProps> = ({
   onChange,
   placeholder = 'Selecione uma opção...',
   required = false,
+  icon
 }) => {
   return (
     <S.Select
       value={value}
       onChange={(e) => onChange(e.target.value)}
       required={required}
-      $icon={arrowDownIcon}
+      $icon={icon || arrowDownIcon}
     >
       <option value="" disabled>
         {placeholder}

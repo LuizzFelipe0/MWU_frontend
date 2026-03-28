@@ -37,14 +37,39 @@ export const Title = styled.h1`
   transition: font-size 0.2s ease-in-out;
 `;
 
+
 export const UserArea = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  color: #000;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: #000;
+`;
+
+export const UserGreeting = styled.span`
+  font-size: 0.95rem;
+  
+  @media (max-width: 600px) {
+    display: none; /* Esconde o texto no mobile para priorizar o ícone */
+  }
 
   strong {
     color: #32d177;
+  }
+`;
+
+export const MenuWrapper = styled.div`
+  width: 2.8rem;
+
+  select {
+    padding: 0.6rem;
+    height: 2.4rem;
+    background-position: center;
+    background-size: 1.2rem;
+    color: transparent; 
+
+    option {
+      color: #000; 
+    }
   }
 `;
 
