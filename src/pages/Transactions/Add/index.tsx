@@ -54,6 +54,8 @@ const AddTransactionPage: React.FC = () => {
   const [isRecurring, setIsRecurring] = useState(false);
   const [recurrenceInterval, setRecurrenceInterval] = useState('');
   const [nextDueDate, setNextDueDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+
 
   useEffect(() => {
     getCategories();
@@ -90,6 +92,9 @@ const AddTransactionPage: React.FC = () => {
       next_due_date: isRecurring
         ? new Date(nextDueDate).toISOString()
         : undefined,
+      end_date: isRecurring
+        ? new Date(nextDueDate).toISOString()
+        : undefined
     });
 
     refreshParentList();
@@ -149,6 +154,15 @@ const AddTransactionPage: React.FC = () => {
           </Form.Field>
 
           <Form.Field>
+            <label>Descrição (Opcional)</label>
+            <TextInput
+              placeholder="Descreva esta transação..."
+              value={description}
+              onChange={setDescription}
+            />
+          </Form.Field>
+
+          <Form.Field>
             <label>É uma transação recorrente?</label>
             <ToggleButton
               selectedValue={isRecurring}
@@ -174,20 +188,16 @@ const AddTransactionPage: React.FC = () => {
               </Form.Field>
 
               <Form.Field>
-                <label>Próximo Vencimento</label>
+                <label>Próximo Vencimento (Opcional)</label>
                 <DateInput value={nextDueDate} onChange={setNextDueDate} />
+              </Form.Field>
+
+              <Form.Field>
+                <label>Último Vencimento (Opcional)</label>
+                <DateInput value={endDate} onChange={setEndDate} />
               </Form.Field>
             </>
           )}
-
-          <Form.Field>
-            <label>Descrição (Opcional)</label>
-            <TextInput
-              placeholder="Notas sobre esta transação..."
-              value={description}
-              onChange={setDescription}
-            />
-          </Form.Field>
 
           <Form.Actions $align="stretch">
             <Button variant="danger" type="button" onClick={handleClose}>
