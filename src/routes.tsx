@@ -23,6 +23,7 @@ import UpdateTransactionPage from './pages/Transactions/Update';
 import DashboardPage from './pages/Dashboard';
 import AddUserPage from './pages/User/Add';
 import UsersPage from './pages/User';
+import UpdateUserPage from './pages/User/Update';
 
 const PrivateRoute = () => {
   const { user, loading } = useAuth();
@@ -85,8 +86,10 @@ const MWURoutes: React.FC = () => {
               <Route path=":id" element={<UpdateCategoryTypePage />} />
             </Route>
 
+            <Route path="profile" element={<UpdateUserPage />} />
+
             <Route path="users" element={<UsersPage />}>
-              {/*<Route path=":id" element={<UpdateUserPage />} />*/}
+              <Route path=":id" element={<UpdateUserPage />} />
             </Route>
           </Route>
 

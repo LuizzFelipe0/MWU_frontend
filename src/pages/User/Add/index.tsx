@@ -6,7 +6,7 @@ import { User, UserInput } from '../../../types/userTypes';
 import CardBox from '../../../components/CardBox';
 import Button from '../../../components/Button/DefaultButton';
 import TextInput from '../../../components/Input/TextInput';
-import PasswordInput from '../../../components/Input/PasswordInput'; // UX Sênior
+import PasswordInput from '../../../components/Input/PasswordInput';
 import Overlay from '../../../components/Overlay';
 import Form from '../../../components/Form';
 import NumberInput from '../../../components/Input/NumberInput';
