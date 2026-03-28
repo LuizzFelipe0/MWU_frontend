@@ -70,10 +70,8 @@ const AddTransactionPage: React.FC = () => {
       return;
     }
 
-    if (isRecurring && (!recurrenceInterval || !nextDueDate)) {
-      alert(
-        'Para transações recorrentes, preencha o intervalo e a próxima data.',
-      );
+     if (isRecurring && !recurrenceInterval) {
+      alert('Para transações recorrentes, preencha o intervalo de recorrência.');
       return;
     }
 
@@ -89,12 +87,13 @@ const AddTransactionPage: React.FC = () => {
       account_id: accountId || undefined,
       is_recurring: isRecurring,
       recurrence_interval: isRecurring ? recurrenceInterval : undefined,
-      next_due_date: isRecurring
-        ? new Date(nextDueDate).toISOString()
-        : undefined,
-      end_date: isRecurring
-        ? new Date(nextDueDate).toISOString()
-        : undefined
+      next_due_date:
+        isRecurring && nextDueDate
+          ? new Date(nextDueDate).toISOString()
+          : undefined,
+
+      end_date:
+        isRecurring && endDate ? new Date(endDate).toISOString() : undefined,
     });
 
     refreshParentList();
