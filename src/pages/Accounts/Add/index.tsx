@@ -107,7 +107,7 @@ const AddAccountPage: React.FC = () => {
               Cancelar
             </Button>
             <Button type="submit" disabled={loading} icon="add">
-              {loading ? 'Salvando...' : 'Criar Meta'}
+              {loading ? 'Salvando...' : 'Criar Conta'}
             </Button>
           </Form.Actions>
         </Form>
