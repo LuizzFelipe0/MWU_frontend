@@ -53,6 +53,8 @@ const MWURoutes: React.FC = () => {
         element={!user ? <AddUserPage /> : <Navigate to="/" />}
       />
 
+      <Route path="profile" element={<UpdateUserPage />} />
+
       <Route element={<PrivateRoute />}>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
@@ -85,8 +87,6 @@ const MWURoutes: React.FC = () => {
               <Route path="add" element={<AddCategoryTypePage />} />
               <Route path=":id" element={<UpdateCategoryTypePage />} />
             </Route>
-
-            <Route path="profile" element={<UpdateUserPage />} />
 
             <Route path="users" element={<UsersPage />}>
               <Route path=":id" element={<UpdateUserPage />} />
